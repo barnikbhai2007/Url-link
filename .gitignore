@@ -1,0 +1,22 @@
+# Secrets - NEVER commit this
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Database (contains real user data, not needed in repo)
+*.db
+*.sqlite3
+
+# Runtime data
+storage/
+bot-api-data/
+
+# OS / editor junk
+.DS_Store
+*.swp
