@@ -1,0 +1,22 @@
+[Unit]
+Description=Telegram Local Bot API Server
+After=network.target
+
+[Service]
+Type=simple
+# EnvironmentFile provides API_ID and API_HASH as shell vars via ExecStart below.
+EnvironmentFile=/opt/filelinkbot/.env
+ExecStart=/bin/bash -c '/usr/local/bin/telegram-bot-api \
+    --api-id=${API_ID} \
+    --api-hash=${API_HASH} \
+    --local \
+    --http-port=${LOCAL_API_PORT} \
+    --dir=/opt/filelinkbot/bot-api-data \
+    --temp-dir=/opt/filelinkbot/bot-api-data/temp'
+Restart=on-failure
+RestartSec=5
+User=YOUR_LINUX_USERNAME
+WorkingDirectory=/opt/filelinkbot
+
+[Install]
+WantedBy=multi-user.target

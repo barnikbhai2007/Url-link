@@ -1,1 +1,9 @@
+[Unit]
+Description=FileLinkBot Expired File Cleanup
 
+[Service]
+Type=oneshot
+EnvironmentFile=/opt/filelinkbot/.env
+ExecStart=/opt/filelinkbot/venv/bin/python /opt/filelinkbot/bot/cleanup.py
+User=YOUR_LINUX_USERNAME
+WorkingDirectory=/opt/filelinkbot/bot

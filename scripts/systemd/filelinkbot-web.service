@@ -1,0 +1,15 @@
+[Unit]
+Description=FileLinkBot Download Web Server
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/opt/filelinkbot/.env
+ExecStart=/opt/filelinkbot/venv/bin/uvicorn server:app --host 0.0.0.0 --port ${WEB_PORT}
+Restart=on-failure
+RestartSec=5
+User=YOUR_LINUX_USERNAME
+WorkingDirectory=/opt/filelinkbot/web
+
+[Install]
+WantedBy=multi-user.target
